@@ -1,0 +1,130 @@
+:root {
+  /*--colores--*/
+  --color-principal: #62ABE6;
+  --color-principal-dark: #223d53;
+  --color-principal-opacy: #d5f7dd;
+  --color-secundario: #f8b80e;
+  --color-white: #ffffff;
+  --color-white-transparency: #ffffffec;
+  --color-text: #122618;
+  --color-grey: #efefef;
+  --color-grey-button: #c4c4c4;
+  --color-grey-dark: #c2c2c2;
+  --color-pendiente-status: rgb(202, 201, 201);
+  --color-proceso-status: #0bed8b;
+  --color-punto-status: #a950e8;
+  --color-contactado-status: #a45200;
+  --color-finalizado-status: rgb(80, 136, 232);
+  --color-camino-status: rgb(83, 212, 255);
+  --color-cancelado-status: rgb(255, 0, 0);
+  --color-anulado-status: rgb(0, 0, 0);
+  --color-empalmado-status: rgb(192, 173, 0);
+  --color-dpz-status: rgb(56, 0, 116);
+  --color-grey-material: rgb(56, 55, 55);
+  --color-green-material: rgb(14, 61, 14);
+  --color-blue-material: rgb(24, 24, 73);
+  --color-ic-start: springgreen;
+  --color-ic-end: orange;
+  --color-enable: #04ff00;
+  --color-reject: #ff0000;
+  --color-share: #0080ff;
+  --color-disable: #cacaca;
+  --height-box: 44px;
+  --color-background: #f5f5f5;
+  /*--sombra--*/
+  --shadow: 0px 0px 30px rgba(0, 0, 0, 0.049);
+  --shadow-button: 0px 0px 8px rgba(187, 187, 187, 0.3);
+  /*--padding--*/
+  --paddingbuttoninput: 10px 10px;
+  --padding: 16px;
+  /*--bordar radius--*/
+  --borderBox: 24px;
+  --borderRadius: 16px;
+  --borderInput: 8px
+}
+
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  background-color: var(--color-background);
+}
+
+* {
+  font-family: 'poppins';
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0px;
+  margin: 0px;
+}
+
+html {
+  font-size: 16px; /* Tamaño base */
+}
+
+h1 {
+  font-size: 2.5rem; /* Aproximadamente 40px */
+  font-weight: 600;
+}
+h2 {
+  font-size: 2rem;   /* Aproximadamente 32px */
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.75rem; /* Aproximadamente 28px */
+  font-weight: 500;
+}
+h4 {
+  font-size: 1.5rem;  /* Aproximadamente 24px */
+  font-weight: 500;
+}
+h5 {
+  font-size: 1.25rem; /* Aproximadamente 20px */
+  font-weight: 500;
+}
+h6 {
+  font-size: 1rem;    /* Aproximadamente 16px */
+  font-weight: 500;
+}
+
+p, span, li {
+  font-size: 14px;    /* 16px, ajustable según el contenido */
+  font-weight: 400;
+}
+
+label {
+  font-size: 14px;
+}
+
+svg {
+  font-size: 32px;
+  transition: 0.3s ease;
+}
+
+svg:hover {
+  transform: scale(1.1);
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  border: 1px solid var(--color-grey-button);
+  padding: var(--paddingbuttoninput);
+  border-radius: var(--borderInput);
+  transition: 0.3s ease;
+  cursor: pointer;
+  resize: none;
+}

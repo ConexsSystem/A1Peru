@@ -1,0 +1,345 @@
+.box-request {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    gap: 8px;
+    width: 25%;
+    min-width: 384px;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 16px;
+    border-radius: var(--borderRadius);
+}
+
+.content-request {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.request {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SUGERENCIAS Y GEOCODING */
+
+.form-service-request {
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: absolute;
+    z-index: 6;
+}
+
+.box-request-trip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.label-box-request-trip {
+    font-size: 14px;
+}
+
+.input-request-origen,
+.input-request-destination {
+    position: relative;
+}
+
+.box-origin-request {
+    display: flex;
+    position: relative;
+}
+
+.box-destination-request {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.suggestions-origen,
+.suggestions-destination,
+.suggestions-destination-add {
+    position: absolute;
+    font-size: 16px;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 16px 16px;
+    z-index: 3;
+    max-height: 250px;
+    /* Ajusta según tus necesidades */
+    overflow-y: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestions-destination {
+    top: 48px;
+}
+
+.suggestions-destination-add {
+    top: 48px;
+}
+
+.suggestions-origen li,
+.suggestions-destination li,
+.suggestions-destination-add li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestions-origen li:hover,
+.suggestions-destination li:hover,
+.suggestions-destination-add li:hover {
+    background-color: #f0f0f0;
+}
+
+.button-add-route,
+.button-remove-route {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white !important;
+    width: 50px !important;
+    padding: 0px;
+    transition: 0.3s ease;
+}
+
+.button-add-route:hover,
+.button-remove-route:hover {
+    border: none;
+}
+
+.button-add-route:hover .icon-add {
+    color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+}
+
+.icon-add,
+.icon-minus {
+    font-size: 24px;
+    color: var(--color-text);
+    border: 2px solid var(--color-text);
+    border-radius: 50%;
+}
+
+.additional-destination {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.icon-favorite {
+    font-size: 24px;
+    color: var(--color-text);
+}
+
+.button-remove-route {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    width: 50px;
+    border: 2px solid red;
+    background-color: white;
+    transition: 0.3s ease;
+}
+
+.button-remove-route:hover .icon-minus {
+    color: red !important;
+    border: 2px solid red;
+}
+
+.text-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-principal-grey) !important;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.text-area:focus-within {
+    border: 1px solid var(--color-principal) !important;
+    outline: none;
+}
+
+.box-request-button {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.activate-preferency {
+    display: block
+}
+
+.desactivate-preferency {
+    display: none
+}
+
+.rmdp-input {
+    height: 48px !important;
+    border-radius: 8px !important;
+}
+
+.rmdp-day.rmdp-today span {
+    background-color: var(--color-principal-grey) !important;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight) {
+    background-color: var(--color-principal) !important;
+    color: var(--text-select) !important;
+}
+
+.box-switch {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-principal-grey);
+    padding: 8px;
+    border-radius: 8px;
+    gap: 8px;
+}
+
+.camp-request {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid var(--color-grey-button);
+    padding: var(--paddingbuttoninput);
+    border-radius: var(--borderInput);
+    transition: 0.3s ease;
+    cursor: pointer;
+    height: 48px;
+}
+
+.camp-request-select {
+    width: 170px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid var(--color-grey-button);
+    padding: var(--paddingbuttoninput);
+    border-radius: var(--borderInput);
+    transition: 0.3s ease;
+    cursor: pointer;
+    height: 48px;
+}
+
+.box-user {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.box-directions-button {
+    display: flex;
+    width: 100%;
+    border-radius: var(--borderInput);
+    border: 1px solid var(--color-grey-button);
+    transition: 0.3s ease;
+}
+
+.box-directions-button:hover,
+.box-directions-button:focus {
+    border: 1px solid var(--color-principal);
+}
+
+.input-directions {
+    border: none;
+}
+
+.input-directions:hover,
+.input-directions:focus {
+    border: none;
+}
+
+.parami {
+    text-align: center;
+}
+
+.box-progress {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(78, 78, 78, 0.365);
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.box-favorite {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    overflow: auto;
+    padding: 8px 0px;
+}
+
+.button-favorite button{
+    padding: 2px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-grey-dark);
+    font-weight: 500;
+    transition: 0.3s ease;
+    cursor: pointer;
+    white-space:nowrap
+}
+
+.button-favorite button:hover{
+    background-color: var(--color-grey-button);
+}
+
+@media only screen and (max-height: 820px) {
+    .box-request {
+        height: 512px;
+        overflow: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .box-request {
+        overflow: auto;
+        left: 80px;
+    }
+}
+
+@media (max-width: 720px) {
+
+    .box-request {
+        height: 512px;
+        overflow: auto;
+        min-width: 0px;
+        width: calc(100% - 96px) !important;
+        left: 80px;
+    }
+
+    .content-request {
+        flex-direction: column;
+    }
+
+    .camp-request-select {
+        width: 100% !important;
+    }
+}

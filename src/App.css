@@ -1,0 +1,278 @@
+.app-container {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  /* Si el sidebar tiene un ancho fijo, se puede agregar un margin-left solo cuando se muestra */
+}
+
+.pendiente-asignacion {
+  background-color: var(--color-pendiente-status);
+  font-weight: 600;
+  color: white;
+}
+
+.servicio-presignado {
+  background-color: var(--color-empalmado-status);
+  font-weight: 600;
+  color: white;
+}
+
+.cancelado {
+  background-color: rgb(255, 162, 69);
+  color: white;
+  font-weight: 600
+}
+
+.cliente {
+  background-color: rgb(69, 122, 255);
+  color: white;
+  font-weight: 600
+}
+
+.tardanza {
+  background-color: rgb(255, 69, 69);
+  color: white;
+  font-weight: 600
+}
+
+table {
+  overflow: auto;
+  font-size: 14px;
+}
+
+table tr th {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+table tr th,
+table tr td {
+  white-space: nowrap;
+  padding: 10px 16px;
+  text-align: left;
+}
+
+table tr td {
+  padding: 16px 16px;
+}
+
+table tbody tr td {
+  border-bottom: 1px solid var(--color-grey);
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+table svg {
+  font-size: 30px;
+  margin: 0px 4px;
+  padding: 4px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+table svg:hover {
+  background-color: var(--color-grey);
+}
+
+.text-align-table {
+  text-align: left;
+}
+
+.TbEye {
+  color: #1B71AE;
+}
+
+.TbReceipt {
+  color: #07bc37;
+}
+
+.TbTrash {
+  color: #ff412f;
+}
+
+.TbShare {
+  color: #108C8F;
+}
+
+.TbToggleRightFilled {
+  color: var(--color-enable);
+}
+
+.TbToggleLeftFilled {
+  color: var(--color-reject);
+}
+
+.TbEditCircle {
+  color: #d0a300;
+}
+
+.TbCircleCheck {
+  color: #ff9100;
+}
+
+.btn-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  min-width: 48px;
+  width: 48px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--color-grey-button);
+}
+
+.TbPlus,
+.TbArrowBarToDown {
+  width: 24px;
+  object-fit: contain;
+}
+
+.status-pendiente {
+  border-radius: var(--borderInput);
+  background-color: var(--color-pendiente-status);
+}
+
+.status-camino-al-servicio {
+  border-radius: var(--borderInput);
+  background-color: var(--color-camino-status);
+}
+
+.status-en-el-punto {
+  border-radius: var(--borderInput);
+  background-color: var(--color-punto-status);
+  color: white;
+}
+
+.status-usuario-contactado {
+  border-radius: var(--borderInput);
+  background-color: var(--color-contactado-status);
+  color: white;
+}
+
+.status-en-proceso {
+  border-radius: var(--borderInput);
+  background-color: var(--color-proceso-status);
+}
+
+.status-preasignado {
+  border-radius: var(--borderInput);
+  background-color: var(--color-empalmado-status);
+}
+
+.status-finalizado {
+  border-radius: var(--borderInput);
+  background-color: var(--color-finalizado-status);
+  color: white;
+}
+
+.status-desplazamiento {
+  border-radius: var(--borderInput);
+  background-color: var(--color-dpz-status);
+  color: white;
+}
+
+.status-anulado-cancelado {
+  border-radius: var(--borderInput);
+  background-color: var(--color-cancelado-status);
+  color: white;
+}
+
+.export-button-rute {
+  height: 48px;
+  width: 100%;
+  border-radius: var(--borderInput);
+  background-color: white;
+  border: 1px solid var(--color-grey-button);
+  transition: 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.export-button-rute:hover {
+  border: 1px solid var(--color-principal);
+  background-color: var(--color-grey);
+}
+
+.status-pendiente-text {
+  color: var(--color-pendiente-status);
+}
+
+.status-camino-al-servicio-text {
+  color: var(--color-camino-status);
+}
+
+.status-en-el-punto-text {
+  color: var(--color-punto-status);
+}
+
+.status-usuario-contactado-text {
+  color: var(--color-contactado-status);
+}
+
+.status-en-proceso-text {
+  color: var(--color-proceso-status);
+}
+
+.status-preasignado-text {
+  color: var(--color-empalmado-status);
+}
+
+.status-finalizado-text {
+  color: var(--color-finalizado-status);
+}
+
+.status-desplazamiento-text {
+  color: var(--color-dpz-status);
+}
+
+.status-anulado-cancelado-text {
+  color: var(--color-cancelado-status);
+}
+
+.en-camino {
+  background-color: var(--color-camino-status);
+}
+
+.en-el-punto {
+  background-color: var(--color-punto-status);
+}
+
+.en-contacto {
+  background-color: var(--color-contactado-status);
+}
+
+.en-proceso {
+  background-color: var(--color-proceso-status);
+}
+
+a {
+  text-decoration: none;
+}
+
+.box-poweredby {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.powered-by {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+  font-weight: 600;
+}
+
+.box-poweredby img {
+  width: 56px;
+  height: auto;
+}

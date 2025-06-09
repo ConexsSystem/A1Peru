@@ -1,0 +1,32 @@
+.custom-button {
+  background-color: var(--color-principal);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 48px;
+  transition: background-color 0.3s ease, filter 0.3s ease;
+  /* Añadir transición para el filtro */
+  width: 100%;
+  border: 2px solid var(--color-principal);
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.custom-button p {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.custom-button:hover {
+  background-color: #223d53;
+  color: white;
+}
+
+.custom-button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}

@@ -1,0 +1,67 @@
+.page,
+.page-request {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: calc(100vw - 286px);
+    height: calc(100dvh - 32px);
+    background-color: transparent;
+    margin: 16px;
+    border-radius: var(--borderBox);
+}
+
+.content-page {
+    background-color: white;
+    height: calc(100dvh - 104px);
+    margin-top: 24px;
+    border-radius: var(--borderBox);
+    padding: var(--borderRadius);
+    overflow: auto;
+}
+
+.maps-page {
+    position: relative;
+    background-color: white;
+    height: calc(100vh - 32px);
+    border-radius: var(--borderBox);
+}
+
+/* Mostrar solo en móviles */
+@media (max-width: 1024px) {
+    .content-page {
+        margin-top: 16px;
+    }
+
+    .page {
+        left: 0px;
+        width: calc(100dvw - 32px);
+    }
+
+    .page-request {
+        left: 0px;
+        width: 100dvw;
+        height: 100dvh;
+        margin: 0px;
+    }
+
+    .maps-page {
+        height: 100dvh;
+    }
+
+    #google-map {
+        border-radius: 0px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-page {
+        height: calc(100dvh - 96px);
+    }
+}
+
+@media (max-width: 720px) {
+    .content-page {
+        margin-top: 16px;
+        height: calc(100dvh - 152px);
+    }
+}

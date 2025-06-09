@@ -1,0 +1,197 @@
+
+.parent {
+    height: calc(100vh - 138px);
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.div1 {
+    width: 100%;
+    height: auto;
+}
+
+.divs-dashboard {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.div2, .div3, .div4 {
+    width: 100%;
+}
+
+.div2 {
+    color: white;
+    background: linear-gradient(120deg, rgb(202, 201, 201) 0%, rgb(148, 148, 148) 100%);
+    border-radius: var(--borderRadius);
+    grid-column: span 2 / span 2;
+    grid-row-start: 4;
+}
+
+.div3 {
+    color: white;
+    background: linear-gradient(120deg, rgb(11, 237, 139) 0%, rgb(5, 183, 100) 100%);
+    border-radius: var(--borderRadius);
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 4;
+}
+
+.div4 {
+    color: white;
+    background: linear-gradient(120deg, rgb(80, 136, 232) 0%, rgb(54, 100, 193) 100%);
+    border-radius: var(--borderRadius);
+    grid-column: span 2 / span 2;
+    grid-column-start: 5;
+    grid-row-start: 4;
+}
+
+.divs-services {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.div5, .div6 {
+    width: 100%;
+}
+
+.box-monthyear {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.monthyear {
+    display: flex;
+    width: 30%;
+    gap: 16px;
+}
+
+.apexcharts-datalabels-group {
+    transform: none !important;
+}
+
+.div1 svg:hover {
+    transform: none;
+}
+
+.div2,
+.div3,
+.div4 {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.div2 svg,
+.div3 svg,
+.div4 svg {
+    color: rgba(255, 255, 255, 0.15);
+    position: absolute;
+    top: -40%;
+    left: 8px;
+    transform: rotate(30deg);
+    font-size: 220px;
+    z-index: 0;
+}
+
+.div3 svg {
+    transform: rotate(0deg);
+}
+
+.content-dashboard {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
+    padding: 16px;
+}
+
+.stast-box {
+    display: flex;
+    gap: 40px;
+    margin-right: 24px;
+}
+
+.stast-box p {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.content-table {
+    margin-top: 24px;
+}
+
+.table-content-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border: 1px solid var(--color-grey-button);
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.table-content-dashboard:last-child {
+    margin-bottom: 0px;
+}
+
+.table-content-dashboard svg {
+    font-size: 16px;
+}
+
+.estadoreserva-dashboard {
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-grey);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fechahora-dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-dashboard {
+    font-weight: 700;
+}
+
+.directions-dashboard {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+@media (max-width: 742px) {
+
+    .box-monthyear {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .content-dashboard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stast-box {
+        flex-direction: column;
+    }
+}

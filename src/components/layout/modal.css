@@ -1,0 +1,231 @@
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(78, 78, 78, 0.365);
+    backdrop-filter: blur(5px);
+}
+
+.box-vale-directions svg,
+.content-data-tracking svg {
+    font-size: 16px ;
+}
+
+.box-modal {
+    position: relative;
+    background-color: white;
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 90vh;
+    overflow: auto;
+    max-width: 30vw;
+    min-width: fit-content;
+}
+
+.box-modal-vale {
+    position: relative;
+    background-color: white;
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 90vh;
+    overflow: auto;
+    max-width: 30vw;
+    min-width: fit-content;
+}
+
+
+.box-title-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+}
+
+.close-modal {
+    border-radius: 50%;
+    background-color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.select-modal {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--color-grey-button);
+    border-radius: var(--borderInput);
+    padding: 8px;
+}
+
+.button-modal {
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--color-grey-button);
+    border-radius: var(--borderInput);
+    padding: 8px;
+    transition: 0.3s ease;
+}
+
+.action-red:hover {
+    background-color: #fd4848;
+    border: 1px solid #fd4848;
+    color: #fff7f7;
+}
+
+.action-green:hover {
+    background-color: #67ff65;
+    border: 1px solid #67ff65;
+    color: #133013;
+}
+
+.content-vale {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.box-vale {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.logo-vale {
+    width: calc(20px * 8);
+    display: block;
+    margin: 16px auto;
+    margin-bottom: 0px;
+}
+
+.box-vale-directions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.box-vale-conductor {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.box-direcitios-vale {
+    display: flex;
+    gap: 4px;
+}
+
+.imagen-ruta {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--borderRadius);
+    margin-top: 4px;
+}
+
+.foto-conductor {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.content-personal {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.box-personal {
+    display: flex;
+    gap: 8px;
+}
+
+.box-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-personal {
+    width: calc(30px * 8);
+}
+
+.box-permission {
+    display: flex;
+    justify-content: space-between;
+}
+
+.permission {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* MAPS */
+
+.box-tracking {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    padding: 16px;
+    background-color: var(--color-background);
+    border-radius: 16px;
+}
+
+.box-tracking .close-modal {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    z-index: 1;
+}
+
+.content-data-tracking {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 400px;
+    width: 400px;
+    overflow-x: auto;
+}
+
+.imagen-conductor {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.download-vale {
+    background-color: var(--color-principal);
+    font-size: 48px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    padding: 8px;
+    color: white;
+    border-radius: 50%;
+}
+
+#vale-pdf-export-preview {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 800px;
+    padding: 16px;
+    background-color: white;
+    z-index: -1;
+}
