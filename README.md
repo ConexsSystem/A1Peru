@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Intranet A1Perú
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sistema web para la gestión de servicios de movilidad corporativa, desarrollado en React. Permite a los usuarios solicitar servicios de taxi, gestionar favoritos, consultar historial, validar servicios y administrar áreas, centros de costos y motivos, todo desde una intranet moderna y segura.
 
-## Available Scripts
+## Características principales
 
-In the project directory, you can run:
+- **Solicitud de servicios**: Formulario avanzado para solicitar traslados, con selección de origen, destino(s), área, centro de costos, motivo y detalle. Incluye cálculo de tarifa en tiempo real y confirmación previa a la generación del servicio.
+- **Gestión de favoritos**: Guarda y reutiliza direcciones frecuentes para agilizar la solicitud de servicios.
+- **Historial y validación**: Consulta y valida servicios realizados, con filtros por fecha, estado y exportación a Excel.
+- **Panel de control (Dashboard)**: Visualiza estadísticas de uso, servicios realizados, pendientes y finalizados, con gráficos interactivos.
+- **Gestión de áreas, centros de costos y motivos**: Administración sencilla de catálogos para la correcta imputación de servicios.
+- **Soporte multiusuario**: Solicita servicios para ti o para otros usuarios de la empresa.
+- **Componentes reutilizables**: Inputs, selects, botones, modales y tablas, todos con diseño consistente y responsivo.
+- **Integración con Google Maps**: Selección visual de direcciones y visualización de rutas.
+- **Notificaciones y validaciones**: Feedback inmediato al usuario ante errores, validaciones o acciones exitosas.
 
-### `npm start`
+## Estructura del proyecto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+  components/
+    common/      # Componentes reutilizables (Input, Button, Select, etc.)
+    layout/      # Layout general, Sidebar, Topbar, Modal, GoogleMaps
+    pages/       # Vistas principales: Request, Dashboard, History, Valide, etc.
+    image/       # Imágenes y recursos gráficos
+  hooks/         # Custom hooks (favoritos, sugerencias de ubicación)
+  utils/         # Utilidades generales y de tarifas
+  assets/        # Recursos estáticos
+  routes/        # Rutas protegidas y navegación
+  App.js         # Componente raíz
+  index.js       # Punto de entrada
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalación
 
-### `npm test`
+1. **Clona el repositorio**  
+   ```bash
+   git clone <url-del-repo>
+   cd A1Peru
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Instala las dependencias**  
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+3. **Configura las variables de entorno**  
+   Crea un archivo `.env` en la raíz con las siguientes variables (ajusta según tu entorno):
+   ```
+   REACT_APP_BASE_URL=https://api.tuempresa.com/
+   REACT_APP_IDEMPRESA=1234
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Inicia la aplicación**  
+   ```bash
+   npm start
+   ```
+   Accede a [http://localhost:3000](http://localhost:3000)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Scripts disponibles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `npm start` — Inicia la app en modo desarrollo.
+- `npm run build` — Genera la versión de producción.
+- `npm test` — Ejecuta los tests.
+- `npm run eject` — Expone la configuración de build (irreversible).
 
-### `npm run eject`
+## Principales dependencias
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React 19**
+- **React Router DOM** — Navegación y rutas protegidas
+- **React Hook Form + Yup** — Formularios y validaciones
+- **MUI (Material UI)** — Componentes visuales y modales
+- **ApexCharts** — Gráficos interactivos
+- **Axios** — Llamadas HTTP
+- **React Toastify** — Notificaciones
+- **Google Maps API** — Geolocalización y rutas
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Personalización y desarrollo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Los estilos principales están en `src/components/pages/*.css` y `src/components/layout/modal.css`.
+- Los componentes de modal están en `src/components/layout/Modal.js`.
+- Para agregar nuevas páginas, crea un archivo en `src/components/pages/` y agrégalo a las rutas.
+- Los hooks personalizados están en `src/hooks/`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contribución
 
-## Learn More
+1. Haz un fork del repositorio.
+2. Crea una rama para tu feature o fix: `git checkout -b feature/nueva-funcionalidad`
+3. Haz tus cambios y commitea: `git commit -am 'Agrega nueva funcionalidad'`
+4. Haz push a tu rama: `git push origin feature/nueva-funcionalidad`
+5. Abre un Pull Request.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
