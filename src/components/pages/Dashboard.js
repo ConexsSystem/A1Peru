@@ -93,13 +93,6 @@ const Dashboard = () => {
         setAserviciof(response.data.AServiciof);
         setAserviciop(response.data.AServiciop);
         setProgress(false);
-
-        // Registra directamente los valores del response
-        // console.log("OFinalizadodma:", response.data.OFinalizadodma.cuenta);
-        // console.log("OFinalizadoma:", response.data.OFinalizadoma.cuenta);
-        // console.log("OPendientedma:", response.data.OPendientedma.cuenta);
-        // console.log("OPendientema:", response.data.OPendientema.cuenta);
-        // console.log("OProcesoma:", response.data.OProcesoma.cuenta);
       } else {
         setProgress(false);
       }

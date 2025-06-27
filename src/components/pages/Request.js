@@ -285,24 +285,24 @@ const Request = () => {
     setProgress(true);
 
     // Log del estado del formulario antes de validar
-    console.log('📝 Estado actual del formulario:', {
-      centrocostos,
-      area,
-      motivo,
-      detalle,
-      tipopago: currentTipopago,
-      tipomovil,
-      fecha,
-      hora,
-      observaciones,
-      parami,
-      usuario,
-      telefono,
-      dataConfiguracion,
-      dataArea,
-      dataCentroCostos,
-      dataMotivo
-    });
+    // console.log('📝 Estado actual del formulario:', {
+    //   centrocostos,
+    //   area,
+    //   motivo,
+    //   detalle,
+    //   tipopago: currentTipopago,
+    //   tipomovil,
+    //   fecha,
+    //   hora,
+    //   observaciones,
+    //   parami,
+    //   usuario,
+    //   telefono,
+    //   dataConfiguracion,
+    //   dataArea,
+    //   dataCentroCostos,
+    //   dataMotivo
+    // });
 
     // Calcula la tarifa usando la función utilitaria
     const tarifa = await calculateTariffUtil({
@@ -363,56 +363,56 @@ const Request = () => {
       // 2. Área
       if (dataConfiguracion.idarea) {
         if (!areaValue.trim()) {
-          console.log('❌ Área es obligatorio pero está vacío');
+          // console.log('❌ Área es obligatorio pero está vacío');
           notifyError('El campo Área es obligatorio.');
           setProgress(false);
           return;
         }
         if (dataConfiguracion.areacondicion === 'Lista') {
-          console.log('🔍 Validando Área - Condición: Lista');
-          console.log('📝 Área ingresada (raw):', areaValue);
-          console.log('📝 Área ingresada (trim):', areaValue.trim());
-          console.log('📝 Área ingresada (normalize):', normalize(areaValue));
-          console.log('📋 Áreas permitidas:', dataArea.map(item => item.area));
+          // console.log('🔍 Validando Área - Condición: Lista');
+          // console.log('📝 Área ingresada (raw):', areaValue);
+          // console.log('📝 Área ingresada (trim):', areaValue.trim());
+          // console.log('📝 Área ingresada (normalize):', normalize(areaValue));
+          // console.log('📋 Áreas permitidas:', dataArea.map(item => item.area));
           const areaSeleccionada = dataArea.find(item => item.area === areaValue);
           if (!areaSeleccionada) {
-            console.log('❌ Área no está en la lista permitida');
+            // console.log('❌ Área no está en la lista permitida');
             notifyError('El valor ingresado en Área no está en la lista permitida.');
             setProgress(false);
             return;
           } else {
-            console.log('✅ Área válida seleccionada:', {
-              area: areaSeleccionada.area,
-              idarea: areaSeleccionada.idarea
-            });
+            // console.log('✅ Área válida seleccionada:', {
+            //   area: areaSeleccionada.area,
+            //   idarea: areaSeleccionada.idarea
+            // });
           }
         }
       }
       // 3. Motivo
       if (dataConfiguracion.idmotsol) {
         if (!motivoValue.trim()) {
-          console.log('❌ Motivo es obligatorio pero está vacío');
+          // console.log('❌ Motivo es obligatorio pero está vacío');
           notifyError('El campo Motivo es obligatorio.');
           setProgress(false);
           return;
         }
         if (dataConfiguracion.motivosolicitudcondicion === 'Lista') {
-          console.log('🔍 Validando Motivo - Condición: Lista');
-          console.log('📝 Motivo ingresado (raw):', motivoValue);
-          console.log('📝 Motivo ingresado (trim):', motivoValue.trim());
-          console.log('📝 Motivo ingresado (normalize):', normalize(motivoValue));
-          console.log('📋 Motivos permitidos:', dataMotivo.map(item => item.motivosolicitud));
+          // console.log('🔍 Validando Motivo - Condición: Lista');
+          // console.log('📝 Motivo ingresado (raw):', motivoValue);
+          // console.log('📝 Motivo ingresado (trim):', motivoValue.trim());
+          // console.log('📝 Motivo ingresado (normalize):', normalize(motivoValue));
+          // console.log('📋 Motivos permitidos:', dataMotivo.map(item => item.motivosolicitud));
           const motivoSeleccionado = dataMotivo.find(item => item.motivosolicitud === motivoValue);
           if (!motivoSeleccionado) {
-            console.log('❌ Motivo no está en la lista permitida');
+            // console.log('❌ Motivo no está en la lista permitida');
             notifyError('El valor ingresado en Motivo no está en la lista permitida.');
             setProgress(false);
             return;
           } else {
-            console.log('✅ Motivo válido seleccionado:', {
-              motivo: motivoSeleccionado.motivosolicitud,
-              idmotivo: motivoSeleccionado.idmotivosolicitud
-            });
+            // console.log('✅ Motivo válido seleccionado:', {
+            //   motivo: motivoSeleccionado.motivosolicitud,
+            //   idmotivo: motivoSeleccionado.idmotivosolicitud
+            // });
           }
         }
       }
@@ -555,23 +555,23 @@ const Request = () => {
     };
 
     // Log del postBody real enviado
-    console.log('📋 POST Body completo:', JSON.stringify(postBody, null, 2));
-    console.log('🔍 IDs calculados:', {
-      idcentrocostos: dataConfiguracion.idcentrocostos ? getCentroCostosId(centrocostosValue) : 0,
-      idarea: dataConfiguracion.idarea ? getAreaId(areaValue) : 0,
-      idmotivo: dataConfiguracion.idmotsol ? getMotivoId(motivoValue) : 0,
-      idmovil: getMovilId(tipomovil)
-    });
-    console.log('📋 Configuración de campos obligatorios:', {
-      idcentrocostos_obligatorio: dataConfiguracion.idcentrocostos,
-      idarea_obligatorio: dataConfiguracion.idarea,
-      idmotsol_obligatorio: dataConfiguracion.idmotsol
-    });
-    console.log('📝 Valores enviados:', {
-      centrocostos: centrocostosValue,
-      area: areaValue,
-      motivo: motivoValue
-    });
+    // console.log('📋 POST Body completo:', JSON.stringify(postBody, null, 2));
+    // console.log('🔍 IDs calculados:', {
+    //   idcentrocostos: dataConfiguracion.idcentrocostos ? getCentroCostosId(centrocostosValue) : 0,
+    //   idarea: dataConfiguracion.idarea ? getAreaId(areaValue) : 0,
+    //   idmotivo: dataConfiguracion.idmotsol ? getMotivoId(motivoValue) : 0,
+    //   idmovil: getMovilId(tipomovil)
+    // });
+    // console.log('📋 Configuración de campos obligatorios:', {
+    //   idcentrocostos_obligatorio: dataConfiguracion.idcentrocostos,
+    //   idarea_obligatorio: dataConfiguracion.idarea,
+    //   idmotsol_obligatorio: dataConfiguracion.idmotsol
+    // });
+    // console.log('📝 Valores enviados:', {
+    //   centrocostos: centrocostosValue,
+    //   area: areaValue,
+    //   motivo: motivoValue
+    // });
 
     try {
       const response = await axios.post(
@@ -585,7 +585,7 @@ const Request = () => {
         }
       );
 
-      console.log('✅ Respuesta del API:', response.data);
+      // console.log('✅ Respuesta del API:', response.data);
 
       if (response.data && response.data.estatus === 200) {
         setProgress(false);
@@ -632,18 +632,18 @@ const Request = () => {
         setZona('');
 
       } else {
-        console.error('❌ Respuesta del API no exitosa:', response.data);
+        // console.error('❌ Respuesta del API no exitosa:', response.data);
         notifyError(`Error al enviar solicitud: ${response.data?.message || 'Respuesta inválida del servidor'}`);
       }
     } catch (error) {
-      console.error('❌ Error al enviar solicitud:', error);
-      console.error('❌ Detalles del error:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        statusText: error.response?.statusText
-      });
-      console.error('❌ Datos enviados:', postBody);
+      // console.error('❌ Error al enviar solicitud:', error);
+      // console.error('❌ Detalles del error:', {
+      //   message: error.message,
+      //   response: error.response?.data,
+      //   status: error.response?.status,
+      //   statusText: error.response?.statusText
+      // });
+      // console.error('❌ Datos enviados:', postBody);
       notifyError(`Error al enviar solicitud: ${error.response?.data?.message || error.message}`);
     }
   }, [dataConfiguracion, dataCentroCostos, dataArea, dataMotivo, dataPersonal, idpersonal, idcliente, tempArray, hora, observaciones, idempresa, dataPago, dataMovil, getMovilId, dataIncremento, origin, destination, parami, dataPersonalo, usuario, key, baseUrl]);
@@ -671,7 +671,7 @@ const Request = () => {
         setDataPersonalo(responseSolicitud.data.APersonalo);
       }
     } catch (error) {
-      console.error(error.response?.data);
+      // console.error(error.response?.data);
     }
   }, [baseUrl, idpersonal, key, idcliente]);
 
@@ -1012,12 +1012,12 @@ const Request = () => {
                       // Buscar y mostrar el ID del área seleccionada
                       const areaSeleccionada = dataArea.find(item => item.area === value);
                       if (areaSeleccionada) {
-                        console.log('✅ Área seleccionada:', {
-                          area: areaSeleccionada.area,
-                          idarea: areaSeleccionada.idarea
-                        });
+                        // console.log('✅ Área seleccionada:', {
+                        //   area: areaSeleccionada.area,
+                        //   idarea: areaSeleccionada.idarea
+                        // });
                       } else {
-                        console.log('⚠️ Área no encontrada en la lista:', value);
+                        // console.log('⚠️ Área no encontrada en la lista:', value);
                       }
                     }}
                   />
@@ -1037,18 +1037,18 @@ const Request = () => {
                     value={centrocostos}
                     onChange={(e) => {
                       const value = e.target.value;
-                      console.log('📝 Centro de costos cambiando a:', value);
+                      // console.log('📝 Centro de costos cambiando a:', value);
                       setCentrocostos(value);
 
                       // Buscar y mostrar el ID del centro de costos seleccionado
                       const centroCostoSeleccionado = dataCentroCostos.find(item => item.centrocostos === value);
                       if (centroCostoSeleccionado) {
-                        console.log('✅ Centro de costos seleccionado:', {
-                          centrocostos: centroCostoSeleccionado.centrocostos,
-                          idcentrocostos: centroCostoSeleccionado.idcentrocostos
-                        });
+                        // console.log('✅ Centro de costos seleccionado:', {
+                        //   centrocostos: centroCostoSeleccionado.centrocostos,
+                        //   idcentrocostos: centroCostoSeleccionado.idcentrocostos
+                        // });
                       } else {
-                        console.log('⚠️ Centro de costos no encontrado en la lista:', value);
+                        // console.log('⚠️ Centro de costos no encontrado en la lista:', value);
                       }
                     }}
                   />
@@ -1074,12 +1074,12 @@ const Request = () => {
                       // Buscar y mostrar el ID del motivo seleccionado
                       const motivoSeleccionado = dataMotivo.find(item => item.motivosolicitud === value);
                       if (motivoSeleccionado) {
-                        console.log('✅ Motivo seleccionado:', {
-                          motivo: motivoSeleccionado.motivosolicitud,
-                          idmotivo: motivoSeleccionado.idmotivosolicitud
-                        });
+                        // console.log('✅ Motivo seleccionado:', {
+                        //   motivo: motivoSeleccionado.motivosolicitud,
+                        //   idmotivo: motivoSeleccionado.idmotivosolicitud
+                        // });
                       } else {
-                        console.log('⚠️ Motivo no encontrado en la lista:', value);
+                        // console.log('⚠️ Motivo no encontrado en la lista:', value);
                       }
                     }}
                   />
