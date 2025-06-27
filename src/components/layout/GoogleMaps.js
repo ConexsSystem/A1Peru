@@ -7,7 +7,6 @@ const GoogleMaps = React.memo(({ markers, polylines = [], onMarkerClick, infoDat
     const markersRef = useRef({});
     const infoWindowRef = useRef(null);
     const polylineRef = useRef(null);
-    const boundsInitialized = useRef(false);             // <-- ref para controlar ajuste inicial
 
     // 1. Inicializar el mapa (una sola vez)
     useEffect(() => {
@@ -99,7 +98,7 @@ const GoogleMaps = React.memo(({ markers, polylines = [], onMarkerClick, infoDat
     useEffect(() => {
         if (!mapRef.current || !window.google?.maps) return;
 
-        // 1. Calcula los keys “deseados” de los markers entrantes
+        // 1. Calcula los keys "deseados" de los markers entrantes
         const newKeys = markers.map((m, i) => m.id ?? `marker-${i}`);
 
         // 2. Elimina solo los markers que ya no existen
@@ -145,12 +144,13 @@ const GoogleMaps = React.memo(({ markers, polylines = [], onMarkerClick, infoDat
             }
         });
 
-        // 4. Ajuste de bounds SOLO la primera vez
-        if (!boundsInitialized.current) {
-            const bounds = new window.google.maps.LatLngBounds();
-            markers
-                .filter(m => (m.type ?? 'circle') === 'circle')
-                .forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
+        // 4. Ajuste de bounds cada vez que cambien los marcadores
+        const bounds = new window.google.maps.LatLngBounds();
+        const circleMarkers = markers.filter(m => (m.type ?? 'circle') === 'circle');
+
+        if (circleMarkers.length > 0) {
+            circleMarkers.forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
+
             if (!bounds.isEmpty()) {
                 mapRef.current.fitBounds(bounds, { padding: 50 });
                 window.google.maps.event.addListenerOnce(mapRef.current, 'idle', () => {
@@ -159,74 +159,13 @@ const GoogleMaps = React.memo(({ markers, polylines = [], onMarkerClick, infoDat
                     }
                 });
             }
-            boundsInitialized.current = true;
+        } else if (markers.length === 0) {
+            // Si no hay marcadores, centrar en Lima por defecto
+            mapRef.current.setCenter({ lat: -12.09029571708219, lng: -77.02909310828508 });
+            mapRef.current.setZoom(12);
         }
 
     }, [markers, onMarkerClick]);
-
-    // useEffect(() => {
-    //     if (!mapRef.current || !window.google.maps) return;
-
-    //     // Limpia marcadores viejos
-    //     Object.values(markersRef.current).forEach(m => m.map = null);
-    //     markersRef.current = {};
-
-    //     markers.forEach((markerData, index) => {
-    //         if (typeof markerData.lat !== 'number' || typeof markerData.lng !== 'number') {
-    //             console.error('Coordenadas inválidas para el marcador:', markerData);
-    //             return;
-    //         }
-    //         const key = markerData.id ?? `marker-${index}`;
-    //         const pos = new window.google.maps.LatLng(markerData.lat, markerData.lng);
-    //         let content;
-    //         if (markerData.type === 'image') {
-    //             content = createImageMarker(markerData.angle, markerData.imageUrl);
-    //         } else {
-    //             content = createCircleMarker(markerData.number ?? index + 1);
-    //         }
-
-    //         const advMarker = new window.google.maps.marker.AdvancedMarkerElement({
-    //             map: mapRef.current,
-    //             position: pos,
-    //             title: markerData.direccion ?? '',
-    //             content,
-    //         });
-    //         advMarker.addListener('gmp-click', () => onMarkerClick?.(markerData, key));
-    //         markersRef.current[key] = advMarker;
-    //     });
-
-    //     // // Ajustar bounds por círculos
-    //     // const bounds = new window.google.maps.LatLngBounds();
-    //     // markers
-    //     //     .filter(m => (m.type ?? 'circle') === 'circle')
-    //     //     .forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
-    //     // if (!bounds.isEmpty()) {
-    //     //     mapRef.current.fitBounds(bounds, { padding: 50 });
-    //     //     window.google.maps.event.addListenerOnce(mapRef.current, 'idle', () => {
-    //     //         if (mapRef.current.getZoom() > 14) {
-    //     //             mapRef.current.setZoom(14);
-    //     //         }
-    //     //     });
-    //     // }
-
-    //     // Ajustar bounds por círculos solo la primera vez
-    //     if (!boundsInitialized.current) {
-    //         const bounds = new window.google.maps.LatLngBounds();
-    //         markers
-    //             .filter(m => (m.type ?? 'circle') === 'circle')
-    //             .forEach(m => bounds.extend({ lat: m.lat, lng: m.lng }));
-
-    //         if (!bounds.isEmpty()) {
-    //             mapRef.current.fitBounds(bounds, { padding: 50 });
-    //             window.google.maps.event.addListenerOnce(mapRef.current, 'idle', () => {
-    //                 if (mapRef.current.getZoom() > 14) {
-    //                     mapRef.current.setZoom(14);
-    //                 }
-    //             });
-    //         }
-    //         boundsInitialized.current = true; // ¡marcamos que ya centramos una vez!
-    //     }
-    // }, [markers, onMarkerClick]);
 
     // 4. Dibujar Polyline cuando polylinePath tenga >1 punto
     // Efecto para dibujar cada Polyline según polylines prop

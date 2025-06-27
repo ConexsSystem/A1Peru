@@ -3,7 +3,7 @@ import Topbar from '../layout/Topbar';
 import axios from 'axios';
 import './contentPage.css';
 import { TbReceipt, TbCircleCheck } from "react-icons/tb";
-import { formatearFecha, truncateText } from '../../utils/utils';
+import { formatearFecha, truncateText, formatPipesToBreaks } from '../../utils/utils';
 import { ModalVale, ModalValidate } from '../layout/Modal';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -197,7 +197,7 @@ const Valide = () => {
                     {service.personalsolicitante || 'NO REGISTRA'}
                   </td>
                   <td className='text-align-table'>{truncateText(service.direccionorigen)}</td>
-                  <td className='text-align-table'>{truncateText(service.adicional)}</td>
+                  <td className='text-align-table'><pre style={{ margin: 0, fontFamily: 'inherit', lineHeight: '1.2' }}>{formatPipesToBreaks(service.adicional)}</pre></td>
                   <td className='text-align-table'>{truncateText(service.direcciondestino)}</td>
                   <td>{service.tipopago}</td>
                   <td>{service.montofinalservicio}</td>

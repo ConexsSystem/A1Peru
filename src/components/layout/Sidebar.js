@@ -13,6 +13,7 @@ const Sidebar = () => {
 
   const empresa = localStorage.getItem('nombrecomercial');
   const administrador = localStorage.getItem('administrador');
+  const tipo = localStorage.getItem('tipo');
 
   const Logout = () => {
     localStorage.clear();
@@ -58,8 +59,8 @@ const Sidebar = () => {
 
         <div className='business-admin'>
           <p className='business'>{empresa}</p>
-          <p className='isAdmin'>{administrador === 'true' ? 'Administrador' : 'Usuario'}</p>
-          <p style={{ textAlign: 'center', fontWeight: '600', marginTop: '8px', fontSize: '12px' }}>Versión 1.0.9</p>
+          <p className='isAdmin'>{tipo}</p>
+          <p style={{ textAlign: 'center', fontWeight: '600', marginTop: '8px', fontSize: '12px' }}>Versión 1.0.11</p>
         </div>
       </nav>
     </>

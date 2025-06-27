@@ -110,6 +110,7 @@ const Login = () => {
                         localStorage.setItem('idvalidaservicio', profileResponse.data.OPersonal.idvalidaservicio);
                         localStorage.setItem('nombres', profileResponse.data.OPersonal.nombres);
                         localStorage.setItem('telefonoprincipal', profileResponse.data.OPersonal.telefonoprincipal);
+                        localStorage.setItem('tipo', profileResponse.data.OPersonal.tokene);
 
                         window.location.href = './dashboard';
                     } else {

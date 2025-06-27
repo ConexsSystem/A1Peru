@@ -3,7 +3,7 @@ import Topbar from '../layout/Topbar';
 import axios from 'axios';
 import './contentPage.css';
 import { TbEye, TbReceipt, TbTrash, TbShare, TbEdit } from "react-icons/tb";
-import { formatearFecha, truncateText, copyCode } from '../../utils/utils';
+import { formatearFecha, truncateText, copyCode, formatPipesToBreaks } from '../../utils/utils';
 import { ModalCancel, ModalVale, ModalTracking, ModalEditService } from '../layout/Modal';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
@@ -246,7 +246,7 @@ const ServicesPersonal = () => {
                     {service.personaltraslado || 'NO REGISTRA'}
                   </td>
                   <td className='text-align-table'>{truncateText(service.direccionorigen)}</td>
-                  <td className='text-align-table'>{truncateText(service.adicional)}</td>
+                  <td className='text-align-table'><pre style={{ margin: 0, fontFamily: 'inherit', lineHeight: '1.2' }}>{formatPipesToBreaks(service.adicional)}</pre></td>
                   <td className='text-align-table'>{truncateText(service.direcciondestino)}</td>
                   <td>{service.tipopago}</td>
                   <td>{service.montofinalservicio}</td>

@@ -36,3 +36,17 @@ export const copyCode = (texto) => {
             notifyError('Error al copiar: ', err);
         });
 };
+
+/**
+ * Reemplaza cada '|' por un salto de línea (\n) y agrega un '- ' al inicio de cada línea.
+ * Ejemplo: 'uno|dos' => '- uno\n- dos'
+ */
+export const formatPipesToBreaks = (text) => {
+    if (typeof text !== 'string') return text;
+    return text
+        .split('|')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => `- ${line}`)
+        .join('\n');
+};

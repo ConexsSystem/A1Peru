@@ -122,177 +122,6 @@ const ModalCancel = ({ showModalServiceDelete, closeModal, idreserva, apiprincip
     )
 }
 
-// const ModalVale = ({ showModalVale, closeModal, idreserva }) => {
-//     const baseUrl = process.env.REACT_APP_BASE_URL?.replace(/\/?$/, "/") || "";
-//     const [progress, setProgress] = useState(false);
-//     const [dataVale, setDataVale] = useState({});
-
-//     const handleVale = useCallback(async () => {
-//         setProgress(true);
-//         const body = { idreserva };
-
-//         try {
-//             const responseVale = await axios.post(`${baseUrl}api/IntranetApp/Vale`, body, {
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'Authorization': `Bearer ${localStorage.getItem('key')}`
-//                 }
-//             });
-
-//             if (responseVale.data.estatus === 200) {
-//                 notifySuccess('Datos obtenidos con éxito');
-//                 setDataVale(responseVale.data);
-//             } else {
-//                 notifyError('No se pudo obtener los datos');
-//             }
-//         } catch (error) {
-//             notifyError('No se pudo obtener los datos');
-//         } finally {
-//             setProgress(false);
-//         }
-//     }, [baseUrl, idreserva]);
-
-//     useEffect(() => {
-//         if (showModalVale && idreserva) {
-//             handleVale();
-//         }
-//     }, [showModalVale, idreserva, handleVale]);
-
-//     const handleDownloadPDF = () => {
-//         const original = document.getElementById('vale-pdf');
-//         if (!original) return;
-
-//         const clone = original.cloneNode(true);
-//         clone.id = 'vale-pdf-export-preview';
-
-//         // Eliminar botones
-//         clone.querySelectorAll('.download-vale, .close-modal').forEach(el => el.remove());
-
-//         // Estilos forzados para el clon
-//         clone.style.position = 'absolute';
-//         clone.style.left = '-9999px';
-//         clone.style.top = '0';
-//         clone.style.width = '800px';
-//         clone.style.maxHeight = 'none';
-//         clone.style.overflow = 'visible';
-//         clone.style.maxWidth = 'none';
-//         clone.style.padding = '16px';
-//         clone.style.backgroundColor = '#ffffff';
-//         clone.style.zIndex = '-1';
-//         clone.style.display = 'block';
-
-//         document.body.appendChild(clone);
-
-//         const images = clone.querySelectorAll('img');
-//         const loadPromises = Array.from(images).map(img =>
-//             img.complete
-//                 ? Promise.resolve()
-//                 : new Promise((res) => {
-//                     img.onload = res;
-//                     img.onerror = res;
-//                 })
-//         );
-
-//         Promise.all(loadPromises).then(() => {
-//             html2canvas(clone, { scale: 2 }).then((canvas) => {
-//                 const imgData = canvas.toDataURL('image/png');
-//                 const pdf = new jsPDF('p', 'mm', 'a4');
-
-//                 const pdfWidth = pdf.internal.pageSize.getWidth();
-//                 const imgWidth = pdfWidth;
-//                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-//                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-//                 pdf.save(`vale-${dataVale.idreservas}.pdf`);
-
-//                 document.body.removeChild(clone);
-//             });
-//         });
-//     };
-
-
-//     if (!showModalVale) return null;
-
-//     return (
-//         <div className='modal'>
-//             {progress && (
-//                 <Box className='box-progress'>
-//                     <CircularProgress color="primary" size="3rem" />
-//                 </Box>
-//             )}
-//             <div className='box-modal-vale' id="vale-pdf">
-//                 <div className='box-title-modal'>
-//                     <h4>Detalle vale #{dataVale.idreservas}</h4>
-//                     <TbXboxX className='close-modal' onClick={closeModal} />
-//                 </div>
-//                 <div className='content-vale'>
-//                     <img src={logo} alt='logo' className='logo-vale' />
-//                     <h3 style={{ textAlign: 'center', lineHeight: '40px', marginBottom: '16px', fontWeight: '600' }}>¡Gracias por preferirnos!</h3>
-//                     <h3 style={{ textAlign: 'center', fontWeight: '600' }}>Total S/{dataVale.ctotal}</h3>
-//                     <h5 style={{ fontWeight: '600', textAlign: 'center' }}>{dataVale.fecha} a las {dataVale.hora}</h5>
-//                     <h6 style={{ fontWeight: '600', marginTop: '4px' }}>Detalle cliente</h6>
-//                     <div className='box-vale'><p>Cliente</p><p>{dataVale.cliente}</p></div>
-//                     <div className='box-vale'><p>Solicitante</p><p>{dataVale.snombre}</p></div>
-//                     <div className='box-vale'><p>Traslado</p><p>{dataVale.ptraslado}</p></div>
-
-//                     <h6 style={{ fontWeight: '600', marginTop: '4px' }}>Detalle tarifa</h6>
-//                     <div className='box-vale'><p>Costo ruta</p><p>S/{dataVale.costoruta}</p></div>
-//                     <div className='box-vale'><p>Peaje</p><p>S/{dataVale.peaje}</p></div>
-//                     <div className='box-vale'><p>Parqueo</p><p>S/{dataVale.parqueo}</p></div>
-//                     <div className='box-vale'><p>Tiempo costo</p><p>S/{dataVale.cespera}</p></div>
-//                     <div className='box-vale'><p>Tiempo min</p><p>{dataVale.tespera}</p></div>
-//                     {/* <div className='box-vale'><p>Duración de viaje</p><p>{dataVale.tservicio}</p></div> */}
-
-//                     <h6 style={{ fontWeight: '600', marginTop: '4px' }}>Método pago</h6>
-//                     <div className='box-vale'><p>Tipo de pago</p><p>{dataVale.tpago}</p></div>
-//                     <div className='box-vale'><p>Centro de costos</p><p>{dataVale.ccosto}</p></div>
-//                     <div className='box-vale'><p>Área</p><p>{dataVale.area}</p></div>
-//                     <div className='box-vale'><p>Motivo</p><p>{dataVale.msolicitud}</p></div>
-//                     <div className='box-vale'><p>Detalle motivo</p><p>{dataVale.detallemotivo}</p></div>
-
-//                     {(dataVale.idestado === 16 || dataVale.idestado === 17) && (
-//                         <>
-//                             <h6 style={{ fontWeight: '600', marginTop: '4px' }}>Detalle conductor</h6>
-//                             <div className='box-vale-conductor'>
-//                                 <img src={dataVale.fconductor} alt='foto conductor' className='foto-conductor'></img>
-//                                 <div>
-//                                     <p>{dataVale.datconductor}</p>
-//                                     <p>{dataVale.datvehiculo}</p>
-//                                     <p style={{ fontWeight: '600' }}>{dataVale.datplaca}</p>
-//                                 </div>
-//                             </div>
-//                         </>
-//                     )}
-
-//                     <h6 style={{ fontWeight: '600', marginTop: '4px' }}>Detalle viaje</h6>
-//                     <div className='box-vale-directions'>
-//                         <div className='box-direcitios-vale'>
-//                             <IoFlagOutline />
-//                             <p>Origen - </p>
-//                             <p style={{ fontWeight: '600' }}>{dataVale.hinicio}</p>
-//                         </div>
-//                         <p>{dataVale.rorigen}</p>
-//                     </div>
-//                     <div className='box-vale-directions'>
-//                         <div className='box-direcitios-vale'>
-//                             <IoFlag />
-//                             <p>Destino - </p>
-//                             <p style={{ fontWeight: '600' }}>{dataVale.hfin}</p>
-//                         </div>
-//                         <p>{dataVale.rdestino}</p>
-//                     </div>
-//                     {/* {dataVale.imagenruta && (dataVale.idestado === 16 || dataVale.idestado === 17) && (
-//                         <img src={dataVale.imagenruta} alt="imagen ruta" className="imagen-ruta" />
-//                     )} */}
-//                 </div>
-//                 <div>
-//                     <TbArrowBigDownLineFilled className='download-vale' onClick={handleDownloadPDF} />
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
 const schemaPersonal = Yup.object().shape({
     tipo: Yup.string().required('Tipo de documento es requerido'),
     ndocumento: Yup.string().required('Número de documento es requerido'),
@@ -2597,4 +2426,32 @@ const ModalFavorite = ({
     );
 };
 
-export { ModalCancel, ModalPersonal, ModalActDesact, ModalADCentroCosto, ModalADArea, ModalTracking, ModalValidate, ModalEditService, ModalFavorite }// Export the component
+const ModalTarifaConfirmacion = ({ show, onClose, fare, onAccept }) => {
+    if (!show) return null;
+    return (
+        <div className="modal">
+            <div className="box-modal">
+                <div className="box-title-modal">
+                    <h4>Tarifa calculada</h4>
+                    <TbXboxX
+                        className="close-modal"
+                        style={{ fontSize: '24px' }}
+                        onClick={onClose}
+                    />
+                </div>
+                <div style={{ textAlign: 'center', margin: '32px 0 24px 0', fontSize: '1.5rem', fontWeight: 600 }}>
+                    S/ {fare.toFixed(2)}
+                </div>
+                <button
+                    className="button-modal action-green"
+                    style={{ width: '100%' }}
+                    onClick={onAccept}
+                >
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export { ModalCancel, ModalPersonal, ModalActDesact, ModalADCentroCosto, ModalADArea, ModalTracking, ModalValidate, ModalEditService, ModalFavorite, ModalTarifaConfirmacion } // Export the component
