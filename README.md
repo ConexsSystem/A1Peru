@@ -47,8 +47,9 @@ src/
 3. **Configura las variables de entorno**  
    Crea un archivo `.env` en la raíz con las siguientes variables (ajusta según tu entorno):
    ```
-   REACT_APP_BASE_URL=https://api.tuempresa.com/
-   REACT_APP_IDEMPRESA=1234
+   REACT_APP_BASE_URL=
+   REACT_APP_IDEMPRESA=
+   REACT_APP_GEO_API_URL=
    ```
 
 4. **Inicia la aplicación**  
@@ -63,6 +64,14 @@ src/
 - `npm run build` — Genera la versión de producción.
 - `npm test` — Ejecuta los tests.
 - `npm run eject` — Expone la configuración de build (irreversible).
+
+## Variables de entorno
+
+El proyecto utiliza las siguientes variables de entorno (definidas en el archivo `.env`):
+
+- `REACT_APP_BASE_URL` — URL base de la API principal
+- `REACT_APP_IDEMPRESA` — ID de la empresa para las consultas
+- `REACT_APP_GEO_API_URL` — URL base de la API de geolocalización y rutas
 
 ## Principales dependencias
 

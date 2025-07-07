@@ -60,8 +60,9 @@ export async function calculateTariff({
         //        });
 
         try {
+            const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
             const routeRes = await axios.get(
-                `https://v2.monterrico.app/api/v3/route/${start.lat},${start.lng}/${end.lat},${end.lng}/-1/tarifaTotal`,
+                `${GEO_API_URL}/api/v3/route/${start.lat},${start.lng}/${end.lat},${end.lng}/-1/tarifaTotal`,
                 { headers: { Authorization: 'Basic c3lzdGVtM3c6NkVpWmpwaWp4a1hUZUFDbw==' } }
             );
 

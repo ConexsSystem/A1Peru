@@ -1484,8 +1484,9 @@ const ModalEditService = ({ showModalEditService, closeModal, idreserva, apiprin
             const start = tempArray[i];
             const end = tempArray[i + 1];
             try {
+                const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
                 const routeRes = await axios.get(
-                    `https://v2.monterrico.app/api/v3/route/${start.lat},${start.lng}/${end.lat},${end.lng}/-1/tarifaTotal`,
+                    `${GEO_API_URL}/api/v3/route/${start.lat},${start.lng}/${end.lat},${end.lng}/-1/tarifaTotal`,
                     { headers: { Authorization: 'Basic c3lzdGVtM3c6NkVpWmpwaWp4a1hUZUFDbw==' } }
                 );
                 const routeData = routeRes.data;
@@ -1613,8 +1614,9 @@ const ModalEditService = ({ showModalEditService, closeModal, idreserva, apiprin
             return;
         }
         try {
+            const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
             const response = await fetch(
-                `https://v2.monterrico.app/api/v3/place/${encodeURIComponent(query)}/0/demo?country=PE`,
+                `${GEO_API_URL}/api/v3/place/${encodeURIComponent(query)}/0/demo?country=PE`,
                 {
                     method: 'GET',
                     headers: {
@@ -1633,7 +1635,8 @@ const ModalEditService = ({ showModalEditService, closeModal, idreserva, apiprin
     const fetchGeocoding = async (coordinate, index = null) => {
         try {
             const formattedCoordinate = coordinate.replace(/,/g, ', ');
-            const url = `https://v2.monterrico.app/api/v3/geocoding/${formattedCoordinate}/0/udemo`;
+            const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
+            const url = `${GEO_API_URL}/api/v3/geocoding/${formattedCoordinate}/0/udemo`;
             const response = await fetch(url);
             const data = await response.json();
             if (data.status === 200) {

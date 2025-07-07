@@ -14,8 +14,9 @@ export const useLocationSuggestions = (baseUrl, idempresa, key) => {
         }
 
         try {
+            const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
             const response = await fetch(
-                `https://v2.monterrico.app/api/v3/place/${encodeURIComponent(query)}/0/demo?country=PE`,
+                `${GEO_API_URL}/api/v3/place/${encodeURIComponent(query)}/0/demo?country=PE`,
                 {
                     method: 'GET',
                     headers: {
@@ -36,7 +37,8 @@ export const useLocationSuggestions = (baseUrl, idempresa, key) => {
     const fetchGeocoding = useCallback(async (coordinate, index = null, setOrigin, setDestination, setAdditionalDestinations) => {
         try {
             const formattedCoordinate = coordinate.replace(/,/g, ', ');
-            const url = `https://v2.monterrico.app/api/v3/geocoding/${formattedCoordinate}/0/udemo`;
+            const GEO_API_URL = process.env.REACT_APP_GEO_API_URL?.replace(/\/?$/, "");
+            const url = `${GEO_API_URL}/api/v3/geocoding/${formattedCoordinate}/0/udemo`;
             const response = await fetch(url);
             const data = await response.json();
 
